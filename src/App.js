@@ -1,4 +1,4 @@
-import Header from '../../sphinfotech/src/components/Header';
+import Header from './components/Header';
 import MainPage from './components/MainPage';
 
 function App() {
