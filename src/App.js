@@ -3,7 +3,7 @@ import MainPage from './components/MainPage';
 
 function App() {
   return (
-    <div className="App">
+    <div style={{overflow:"hidden"}}>
             <Header />
             <MainPage />
     </div>

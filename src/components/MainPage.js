@@ -10,6 +10,12 @@ import graphic3 from "../Images/graphic3.png"
 import star from "../Images/Star.png"
 import Arrow from '../Images/Arrow.png'
 import CircleLine from '../Images/circleLine.png'
+import image1 from '../Images/image1.png'
+import image2 from '../Images/image2.png'
+import image3 from '../Images/image3.png'
+import image4 from '../Images/image4.png'
+import image5 from '../Images/image5.png'
+import image6 from '../Images/image6.png'
 import { Typography, Box, styled, Button } from "@mui/material"
 const MainWrapper = styled(Box)({
     "& .mainDiv": {
@@ -23,7 +29,10 @@ const MainWrapper = styled(Box)({
     "& .contentWrap": {
         width: "796px",
         textAlign: "left",
-        position: "relative"
+        position: "relative",
+        "@media screen and (max-width: 768px)": {
+            width: "auto"
+        },
     },
     "& .textTypo": {
         fontFamily: "Poppins",
@@ -54,7 +63,10 @@ const MainWrapper = styled(Box)({
         fontWeight: 400,
         lineHeight: "24px",
         color: "#FFFFFF",
-        width: "562px"
+        width: "562px",
+        "@media screen and (max-width: 768px)": {
+            width: "auto"
+        },  
     },
     "& .btnStyle": {
         maxWidth: "197px",
@@ -77,13 +89,6 @@ const MainWrapper = styled(Box)({
         position: "relative",
         left: "-20px"
     },
-    "& .graphic2Image": {
-        width: "91.1%",
-        mixBlendMode: "color-dodge",
-        position: "absolute",
-        right: "0px",
-        top: "190px",
-    },
     "& .grapic1Image": {
         mixBlendMode: "color-dodge",
         position: "absolute",
@@ -96,7 +101,6 @@ const MainWrapper = styled(Box)({
     "& .qualityBox": {
         padding: "74px 41px 92px 39px",
         backgroundColor: "#FBFBFB",
-        boxShadow: "0px 4px 4px 0px #00000040",
         display: "flex",
         "@media screen and (max-width: 1060px)": {
             flexDirection: "column",
@@ -230,6 +234,13 @@ const MainWrapper = styled(Box)({
         display: "flex",
         justifyContent: "space-around",
         alignItems: "center",
+        "@media screen and (max-width: 1433px)": {
+         width: "80%",
+        },
+        "@media screen and (max-width: 768px)": {
+            height: "auto",
+            width: "100%",
+        },
     },
     "& .hireText": {
     fontFamily: "Inter",
@@ -238,6 +249,70 @@ const MainWrapper = styled(Box)({
     lineHeight: "55px",
     color: "#29272E",
     width: "40%"
+    },
+    "& .designText": {
+    fontFamily: "Inter",
+    fontSize: "35px",
+    fontWeight: 400,
+    lineHeight: "55px",
+    textAlign: "center",
+    color: "#1A202C"
+    },
+    "& .box1": {
+        padding: "98px",
+        border: "1px",
+        backgroundColor: "#F7F7FA",
+        display: "flex",
+        flexDirection: "column",
+        gap: "105px",
+        "@media screen and (max-width: 1433px)": {
+            padding: "0px"
+        },
+    },
+    "& .box2": {
+        maxWidth: "604px",
+        width: "100%",
+        border: "#E7DAED",
+        backgroundColor: "#FAFAFA" ,
+        border: "1px solid #E7DAED",
+    },
+    "& .box3": {
+        display: "flex",
+        padding: "20px",
+        display: "flex",
+        gap: "25px"
+    },
+    "& .box4": {
+      maxWidth: "59px",
+      width:"100%",
+      height: "56px",
+      borderRadius: "10px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+    },
+    "& .boxcardWrap": {
+     display:"flex",
+     gap:"25px",
+     flexWrap: "wrap",
+     justifyContent: "center"
+    },
+    "& .cardTitle": {
+    fontFamily: "Inter",
+    fontSize: "20px",
+    fontWeight: 600,
+    lineHeight: "27.3px",
+    color: "#1A202C"
+    },
+    "& .cardContent": {
+    fontFamily: "Inter",
+    fontSize: "14px",
+    fontWeight: 400,
+    lineHeight: "22.68px",
+    color: "#718096"
+    },
+    "& .mainCardWrapper": {
+        width: "100%",
     }
 })
 
@@ -247,6 +322,14 @@ const MainPage = () => {
         { img: uaeImage, name: "UAE" },
         { img: usaImage, name: "United States" }
 
+    ]
+    const cardData = [
+        { "img": image1 ,  "title": "UX Driven Engineering", "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu. Faucibus venenatis felis id augue sit", "color": "linear-gradient(225deg, #29272E 0%, #27272E 100%)"},
+        { "img": image2 ,  "title": "Developing Shared Understanding", "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu. Faucibus venenatis felis id augue sit", "color": "linear-gradient(225deg, #68DBF2 0.01%, #509CF5 100%)"},
+        { "img": image3,  "title": "Proven Experience and Expertise", "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu. Faucibus venenatis felis id augue sit", "color": "linear-gradient(224.47deg, #FF92AE 8.18%, #FF3D9A 95.84%)"},
+        { "img": image4 ,  "title": "Security & Intellectual Property (IP)", "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu. Faucibus venenatis felis id augue sit", "color": "linear-gradient(225deg, #67E9F1 0%, #24E795 100%)"},
+        { "img": image5 ,  "title": "Code Review", "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu. Faucibus venenatis felis id augue sit", "color": "linear-gradient(225deg, #FFEF5E 0%, #F7936F 100%)"},
+        { "img": image6 ,  "title": "Quality Assurance & Testing", "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu. Faucibus venenatis felis id augue sit", "color": "linear-gradient(225deg, #F76680 0%, #57007B 100%)"},
     ]
     return <MainWrapper>
         <Box className="mainDiv">
@@ -268,7 +351,6 @@ const MainPage = () => {
             <Typography className='longText'>In accordance with your company's needs, Maxtra Technologies offers tailored app and web development solutions.</Typography>
             <Button className='btnStyle'>Contact Us</Button>
             <img src={graphic3} className='graphic3IMage' />
-            <img src={graphic2} className='graphic2Image' />
             <img src={graphic1} className='grapic1Image' />
         </Box>
         <Box style={{ width: "100%" }}>
@@ -335,6 +417,31 @@ const MainPage = () => {
                     </Box>
 
             </Box>
+        </Box>
+        <Box className="mainCardWrapper">
+        <Box className="box1">
+            <Box>
+            <Typography className='designText'>Our design and</Typography>
+            <Typography className='designText' style={{fontWeight: 700 }}>development approach</Typography>
+            </Box>
+                <Box className= "boxcardWrap">
+                    {
+                       cardData.map((item)=> 
+                        <Box className="box2">
+                        <Box className="box3">
+                           <Box  className= "box4" style={{ background: `${item.color}`}}>
+                             <img src={item.img} /> 
+                             </Box>
+                            <Box>
+                                <Typography className='cardTitle'>{item.title}</Typography>
+                                <Typography className='cardContent'>{item.content}</Typography>
+                            </Box>
+                        </Box>
+                        </Box>
+                    )
+                    }
+                </Box>
+        </Box>
         </Box>
         </Box>
     </MainWrapper>
