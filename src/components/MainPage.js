@@ -17,6 +17,7 @@ import image4 from '../Images/image4.png'
 import image5 from '../Images/image5.png'
 import image6 from '../Images/image6.png'
 import { Typography, Box, styled, Button } from "@mui/material"
+import CenterMode from './Slider';
 const MainWrapper = styled(Box)({
     "& .mainDiv": {
         backgroundColor: "#3A3859",
@@ -165,13 +166,16 @@ const MainWrapper = styled(Box)({
     },
     "& .cardStyle": {
         maxWidth: "254px",
-        height: "271px",
+        // height: "271px",
         borderRadius: "10px",
         backgroundColor: "#FFFFFF",
         border: "1px solid #FFFFFF",
         boxShadow: "0px 4px 14px 4px #170E4D12",
         padding: "20px",
         textAlign: "center",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
         "@media screen and (max-width: 485px)": {
             height: "auto",
         },
@@ -313,6 +317,14 @@ const MainWrapper = styled(Box)({
     },
     "& .mainCardWrapper": {
         width: "100%",
+    },
+    "& .successText": {
+        display: "flex",
+        gap: "53px",
+        "@media screen and (max-width: 1433px)": {
+            flexWrap: "wrap",
+            justifyContent: "center"
+        },
     }
 })
 
@@ -386,7 +398,7 @@ const MainPage = () => {
                 <Button className='weDoBtn'>What we do <img src={Arrow} style={{ paddingLeft: "12px" }} /></Button>
             </Box>
             <Typography className='globalText'>Global clients and handpicked projects that place innovation at the forefront</Typography>
-            <Box style={{display: "flex", gap: "53px" }}>
+            <Box className="successText">package.json
                 <Box>
                     <Typography className='sinceTypo' style={{ fontWeigth: 600 }}>01+</Typography>
                     <Typography className='cardTitle'>Year Of Sucess</Typography>
@@ -408,7 +420,10 @@ const MainPage = () => {
                 </Box>
             </Box>
         </Box>
-        <Box style={{ width:"100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
+
+            <CenterMode />
+
+        <Box style={{ width:"100%", display: "flex", justifyContent: "center", alignItems: "center",paddingTop: "119px", paddingBottom: "67px"}}>
             <Box className="hireBox">
                 <Typography className='hireText'>Hire the best developers and designers around!</Typography>
                 <Box style={{position:"relative"}}>
