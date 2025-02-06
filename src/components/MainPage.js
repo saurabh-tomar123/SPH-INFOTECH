@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import moon from "../Images/moon.png"
 import curvedLine from "../Images/curvedLine.png"
 import indiaImage from "../Images/indiaImage.png"
 import uaeImage from "../Images/uaeImage.png"
 import usaImage from "../Images/usaImage.png"
 import graphic1 from "../Images/graphic1.png"
-import graphic2 from "../Images/graphic2.png"
 import graphic3 from "../Images/graphic3.png"
 import star from "../Images/Star.png"
 import Arrow from '../Images/Arrow.png'
@@ -18,6 +17,23 @@ import image5 from '../Images/image5.png'
 import image6 from '../Images/image6.png'
 import { Typography, Box, styled, Button } from "@mui/material"
 import CenterMode from './Slider';
+import figma from '../Images/figma.png'
+import ReactImg from '../Images/React.png'
+import sql from '../Images/sql.png'
+import mongo from '../Images/mongo.png'
+import Go from '../Images/Go.png'
+import RubyOnRails from '../Images/RubyOnRails.png'
+import Python from '../Images/Python.png'
+import NETCore from '../Images/NETCore.png'
+import java from '../Images/Java.png'
+import PHP from '../Images/PHP.png'
+import NodeJS from '../Images/NodeJS.png'
+import Line from '../Images/Line.png'
+import Trophy from '../Images/Trophy.png'
+import FooterImg from '../Images/FooterImg.png'
+import RegisterForm from './RegisterForm';
+import Header from './Header';
+
 const MainWrapper = styled(Box)({
     "& .mainDiv": {
         backgroundColor: "#3A3859",
@@ -297,7 +313,7 @@ const MainWrapper = styled(Box)({
     },
     "& .boxcardWrap": {
      display:"flex",
-     gap:"25px",
+     gap:"16px",
      flexWrap: "wrap",
      justifyContent: "center"
     },
@@ -325,10 +341,116 @@ const MainWrapper = styled(Box)({
             flexWrap: "wrap",
             justifyContent: "center"
         },
+    },
+    "& .techStackWrapper": {
+        display: "flex",
+        justifyContent: "center",
+        flexWrap: "wrap",
+        alignItems: "center",
+        gap: "60px"        
+    },
+    "& .techStackText": {
+        fontStyle:"Inter",
+        fontWeight: 400,
+        fontSize: "35px",
+        lineHeight: "55px"
+    },
+    "& .iconClass": {
+        width:"166px",
+        height:"94px",
+        filter: "grayscale(1)",
+        transition: "filter 0.3s ease",
+        "&:hover": {
+          filter: "none"
+        }
+    },
+    "& .idText": {
+        fontFamily: "Inter",
+        fontSize: "18px",
+        fontWeight: 700,
+        lineHeight: "21.78px",
+        letterSpacing: "-0.005em",
+        paddingTop:"15px",
+        background: "linear-gradient(90deg, #57007B, #F76680)",
+        "-webkit-background-clip": "text",
+        "-webkit-text-fill-color": "transparent"
+    },
+    "& .devTitle": {
+        fontFamily: "Inter",
+        fontSize: "18px",
+        fontWeight: 700,
+        lineHeight: "21.78px",
+        letterSpacing: "-0.005em",
+        color: "#1A202C",
+    },
+    "& .devContent": {
+        width:"245px",
+        fontFamily: "Inter",
+        fontSize: "14px",
+        fontWeight: 400,
+        lineHeight: "20px",
+        letterSpacing: "-0.005em",
+        color: "#718096"
+    },
+    "& .lineAlign": {
+        display: "flex",
+        gap: "20px",
+        alignItems: "center",
+        paddingLeft: "68px",
+        paddingTop: "52px",
+        paddingBottom: "52px",
+        "@media screen and (max-width: 1200px)": {
+            display: "none"
+        },
+    },
+    "& .getinTouch": {
+        fontFamily: "Montserrat",
+        fontSize: "40px",
+        fontWeight: 700,
+        lineHeight: "29.78px",
+        color: "#000000",
+        paddingLeft:"58px",
+        paddingTop: "43px"
+    },
+    "& .footerText": {
+        fontFamily: "Inter",
+        fontSize: "20px",
+        fontWeight: 600,
+        lineHeight: "27.3px",
+        background: 'linear-gradient(225deg, #F76680 0%, #57007B 100%)',
+        "-webkit-background-clip": "text",
+        "-webkit-text-fill-color": "transparent",
+        textDecorationLine: "underline",
+        textDecorationColor: "#57007B"
+    },
+    "& .footerdiv": {
+        width:"80%",
+        borderRadius: "40px",
+        border: "1px solid gray",
+        backgroundColor: "#FFFFFF",
+        display:"flex",
+        justifyContent:"space-around",
+        alignItems: "center",
+        "@media screen and (max-width: 768px)": {
+            flexDirection: "column",
+            width: "100%"
+        },
+    },
+    "& .footerInternal": {
+        width:"60%",
+        display: "flex",
+        gap:"20px",
+        "@media screen and (max-width: 768px)": {
+            width:"100%",
+            justifyContent:"center",
+            flexWrap: "wrap"
+        },
     }
 })
 
 const MainPage = () => {
+    const currentRef = useRef(null)
+    const serviceRef = useRef(null)
     const images = [
         { img: indiaImage, name: "HQ India" },
         { img: uaeImage, name: "UAE" },
@@ -343,7 +465,52 @@ const MainPage = () => {
         { "img": image5 ,  "title": "Code Review", "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu. Faucibus venenatis felis id augue sit", "color": "linear-gradient(225deg, #FFEF5E 0%, #F7936F 100%)"},
         { "img": image6 ,  "title": "Quality Assurance & Testing", "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu. Faucibus venenatis felis id augue sit", "color": "linear-gradient(225deg, #F76680 0%, #57007B 100%)"},
     ]
-    return <MainWrapper>
+
+    let techStackImages = [
+        { "img": figma },
+        { "img": ReactImg },
+        { "img": sql },
+        { "img": mongo },
+        { "img": Go },
+        { "img": RubyOnRails },
+        { "img": Python },
+        { "img": NETCore },
+        { "img": java },
+        { "img": PHP },
+        { "img": NodeJS },
+
+    ]
+    const devContentBox1 = [
+        {id:"#1", title:"Assemble the right team", content:"We handle all aspects of vetting and choosing the right team that you don't have the time, expertise, or desire to do."},
+        {id:"#2", title:"Sprint planning", content:"Sprint roadmap is a collective planning effort. Team members collaborate to clarify items and ensure shared understanding."},
+        {id:"#3", title:"Tech architecture", content:"We break monolithic apps into microservices. Decoupling the code allows teams to move faster and more independently."},
+        ]
+    const devContentBox2 = [
+        {id:"#4", title:"Standups & weekly demos", content:"Standups, weekly demos, and weekly reviews make sure everyone is on the same page and can raise their concerns."},
+        {id:"#5", title:"Code reviews", content:"Code reviews before release help detect issues like memory leaks, file leaks, performance signs, and general bad smells."},
+        {id:"#6", title:"Iterative delivery", content:"We divide the implementation process into several checkpoints rather than a single deadline."},
+    ]
+
+
+     const handleFocus = () => {
+        if(currentRef.current){
+            currentRef.current.focusOnRegister()
+        }
+     }
+     const handleServiceFocus = () => {
+        console.log("calling...")
+
+        if(serviceRef.current){
+            serviceRef.current.focusOnServices()
+        }
+     }
+     
+
+
+    return <>
+            <Header  handleFocus ={handleFocus} handleServiceFocus={handleServiceFocus} />
+    <MainWrapper>
+
         <Box className="mainDiv">
             <img src={moon} style={{ width: "185px", height: "152px", mixBlendMode: "color-dodge" }} />
             <Box className="contentWrap">
@@ -361,16 +528,16 @@ const MainPage = () => {
                 }
             </Box>
             <Typography className='longText'>In accordance with your company's needs, Maxtra Technologies offers tailored app and web development solutions.</Typography>
-            <Button className='btnStyle'>Contact Us</Button>
+            <Button className='btnStyle' onClick={handleFocus}>Contact Us</Button>
             <img src={graphic3} className='graphic3IMage' />
             <img src={graphic1} className='grapic1Image' />
         </Box>
         <Box style={{ width: "100%" }}>
             <Box className="qualityBox">
                 <Box className="internalBox">
-                    <Typography className='sinceTypo'>S I N C E  2 0 0 9</Typography>
+                    <Typography className='sinceTypo' >S I N C E  2 0 0 9</Typography>
                     <Typography className='qualityText'>Quality Technology & People</Typography>
-                    <Typography>As an industry leader, we take it as our responsibility to help the businesses in acquiring their deserved place in the market. Maxtra Technologies strongly believes in building something that turns small startups into a globally leading organizations.
+                    <Typography style={{ width: "85%" }}>As an industry leader, we take it as our responsibility to help the businesses in acquiring their deserved place in the market. Maxtra Technologies strongly believes in building something that turns small startups into a globally leading organizations.
                     </Typography>
                 </Box>
                 <Box className="cardWrapper">
@@ -421,7 +588,7 @@ const MainPage = () => {
             </Box>
         </Box>
 
-            <CenterMode />
+            <CenterMode ref={serviceRef}/>
 
         <Box style={{ width:"100%", display: "flex", justifyContent: "center", alignItems: "center",paddingTop: "119px", paddingBottom: "67px"}}>
             <Box className="hireBox">
@@ -459,6 +626,162 @@ const MainPage = () => {
         </Box>
         </Box>
         </Box>
+        <Box className="techStackWrapper">
+            <Box style={{ width: "100%", alignItems: "center", display: "flex", flexDirection: "column" }}>
+                <Typography className='techStackText'>our</Typography>
+                <Typography className='techStackText' style={{ fontWeight: "700px" }}>Tech Stack</Typography>
+
+            </Box>
+            {
+                techStackImages.map((item) =>
+                    <img src={item.img} className='iconClass' />
+                )
+            }
+        </Box>
+        <Box style={{ paddingTop: "50px", paddingBottom: "50px" }}>
+
+            <Box style={{ position: "relative" }}>
+                <Box style={{ width: "100%", alignItems: "center", display: "flex", flexDirection: "column" }}>
+                    <Typography className='techStackText'>How development</Typography>
+                    <Typography className='techStackText' style={{ fontWeight: "700px" }}>through                      works</Typography>
+                </Box>
+                <Box>
+                    <Box style={{ display: "flex", gap: "79.43px", justifyContent: "center", flexWrap:"wrap" }}>
+                        {
+                            devContentBox1.map((item) =>
+                                <Box style={{
+                                    maxWidth: "334px",
+                                    paddingLeft: "23px",
+                                    paddingTop: "25px",
+                                    paddingBottom: "48px",
+                                    paddingRight: "68px",
+                                    backgroundColor: "#FFFFFF",
+                                    border: "1px solid #E7DAED",
+                                    borderRadius: "9px"
+                                }}>
+                                    <Box style={{ display: "flex", gap: "10px", alignItems: "baseline" }}>
+                                        <Typography className='idText'>{item.id}</Typography>
+                                        <Typography className='devTitle'>{item.title}</Typography>
+                                    </Box>
+                                    <Typography className='devContent'>{item.content}</Typography>
+                                </Box>
+                            )
+                        }
+                    </Box>
+                    <Box>
+                        <Box className="lineAlign">
+                            <Box style={{ width: "2px", height: "35px", backgroundColor: "#F76680", position: "absolute", top: "342px", left: "23%" }}></Box>
+                            <Box style={{ width: "2px", height: "35px", backgroundColor: "#F76680", position: "absolute", top: "342px", left: "50%" }}></Box>
+                            <Box style={{ width: "2px", height: "35px", backgroundColor: "#F76680", position: "absolute", top: "342px", left: "77%" }}></Box>
+                            <img src={Line} style={{ height: "2px", width: "93%" }} /> <img src={Trophy} style={{ width: "46.99px", height: "48.96px" }} />
+                            <Box style={{ width: "2px", height: "35px", backgroundColor: "#F76680", position: "absolute", top: "378px", left: "27%" }}></Box>
+                            <Box style={{ width: "2px", height: "35px", backgroundColor: "#F76680", position: "absolute", top: "378px", left: "54%" }}></Box>
+                            <Box style={{ width: "2px", height: "35px", backgroundColor: "#F76680", position: "absolute", top: "378px", left: "81%" }}></Box>
+                        </Box>
+                    </Box>
+                    <Box style={{ display: "flex", gap: "79.43px", paddingLeft: "8%", justifyContent: "center", flexWrap:"wrap" }}>
+                        {
+                            devContentBox2.map((item) =>
+                                <Box style={{
+                                    maxWidth: "334px",
+                                    paddingLeft: "23px",
+                                    paddingTop: "25px",
+                                    paddingBottom: "48px",
+                                    paddingRight: "68px",
+                                    backgroundColor: "#FFFFFF",
+                                    border: "1px solid #E7DAED",
+                                    borderRadius: "9px"
+                                }}>
+                                    <Box style={{ display: "flex", gap: "10px", alignItems: "baseline" }}>
+                                        <Typography className='idText'>{item.id}</Typography>
+                                        <Typography className='devTitle'>{item.title}</Typography>
+                                    </Box>
+                                    <Typography className='devContent'>{item.content}</Typography>
+                                </Box>
+                            )
+                        }
+                    </Box>
+                </Box>
+            </Box>
+        </Box>
+        <Box style={{
+            backgroundImage: `url(${FooterImg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            height: '580px',
+            width: "100%",
+            paddingTop:"85px",
+            paddingBottom:"85px",
+            display:"flex",
+            justifyContent: "center"
+        }}>
+
+            <Box style={{ maxWidth: "1220px", height: "579.32px",  borderRadius: "42.54px", backgroundColor:"#FFFFFF", backdropFilter: "blur(85.07670593261719px)",
+                boxShadow: '0px 0px 85.08px 0px #0000001A' }}>
+                <Typography className='getinTouch'>Get In touch with us</Typography>
+                <RegisterForm  ref = {currentRef} />
+            </Box>
+        </Box>
+        <Box style={{ width:"100%", paddingBottom:'20px' }}>
+            <Box style={{ display:"flex", justifyContent:"space-around", paddingTop: "20px", flexWrap: "wrap" }}>
+            <Box style={{ display:"flex", flexDirection: "column", gap:"10px" }}>
+            <Typography className='footerText'>What We Do</Typography>
+            <Typography className='devContent'>Mobile App Development</Typography>
+            <Typography className='devContent'>E-Commerce App Development</Typography>
+            <Typography className='devContent'>Web & CMS Development</Typography>
+            <Typography className='devContent'>UI/UX Designig</Typography>
+            <Typography className='devContent'>Marketing and Branding</Typography>
+            <Typography className='devContent'>Resource Outsorcing</Typography>
+            </Box>
+
+            <Box style={{ display:"flex", flexDirection: "column", gap:"10px" }} >
+            <Typography className='footerText'>We Work With</Typography>
+            <Typography className='devContent'>Enterprises App</Typography>
+            <Typography className='devContent'>Healthacre</Typography>
+            <Typography className='devContent'>Social Networking</Typography>
+            <Typography className='devContent'>Entertainment</Typography>
+            <Typography className='devContent'>Finance Sector</Typography>
+            <Typography className='devContent'>Real Estate</Typography>
+            <Typography className='devContent'>Food & restaurant</Typography>
+            <Typography className='devContent'>Education</Typography>
+            <Typography className='devContent'>Event App</Typography>
+            </Box>
+
+            <Box style={{ display:"flex", flexDirection: "column", gap:"10px" }} >
+            <Typography className='footerText'>Hire Developers</Typography>
+            <Typography className='devContent'>Iphone</Typography>
+            <Typography className='devContent'>Ipad</Typography>
+            <Typography className='devContent'>Android</Typography>
+            <Typography className='devContent'>PHP</Typography>
+            <Typography className='devContent'>Magento</Typography>
+            <Typography className='devContent'>Drupal</Typography>
+            <Typography className='devContent'>Wordpress</Typography>
+            <Typography className='devContent'>Joomia</Typography>
+            </Box>
+            </Box>
+            <Box style={{display:"flex", justifyContent:"center", alignItems: "center", paddingTop: "20px"}}>
+                <Box className="footerdiv">
+                <Box style={{padding:"10px"}}>
+                <Typography className='spanText' style={{fontSize: "30px", fontWeight: 0 }}>WANT US TO CONTACT YOU</Typography>
+                <Typography className='sinceTypo'>Share your email</Typography>
+                </Box>
+                <Box className="footerInternal">
+                    <input type="email"  placeholder='Enter Email Address' style={{  fontFamily:"Inter", fontSize:"20px", width: "70%", height: "50px",  borderRadius: "20px" ,paddingLeft: "20px"}} />
+                    <Button className='weDoBtn' style={{ borderRadius: "35px",  height: "50px" , width: "100%", maxWidth:"150px"}}> Send</Button>
+                </Box>
+                </Box>
+            </Box>
+            <Box style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap:"20px", paddingTop: "20px"}}>
+                <Box style={{ width:"80%", height: "1px", backgroundColor: "gray"}}></Box>
+                <Box  style={{width: "80%",  display:"flex" , justifyContent: "space-between"}}>
+                    <Typography className='devContent' style={{width:"auto"}}> Terms & Conditions | Privacy Policy | Refund Policy </Typography>
+                    <Typography className='devContent' style={{width:"auto"}} >Copyright @ 2024 SPH Technology</Typography>
+                </Box>
+            </Box>
+            
+
+        </Box>
     </MainWrapper>
+    </>
 }
 export default MainPage

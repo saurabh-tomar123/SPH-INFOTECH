@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef, useImperativeHandle, useRef } from "react";
 import Slider from "react-slick";
 // Import the necessary CSS for react-slick
 import "slick-carousel/slick/slick.css";
@@ -56,7 +56,16 @@ const MainWrapper = styled(Box)({
     }
 })
 
-function CenterMode() {
+const  CenterMode = forwardRef((props, ref) => {
+  const servicesRef = useRef();
+
+  // Expose the focus method to the parent
+  useImperativeHandle(ref, () => ({
+    focusOnServices() {
+      servicesRef.current.scrollIntoView({ behavior: "smooth" });
+    },
+  }));
+
   const settings = {
     className: "center",
     centerMode: true,
@@ -72,7 +81,7 @@ function CenterMode() {
   return (
     <div className="slider-container" style={{ padding: "20px", paddingBottom: "100px", backgroundColor: "#F9F9FF" }}>
         <MainWrapper >
-        <Typography  className="servicesText" >Services we offer</Typography>
+        <Typography  className="servicesText" ref={servicesRef}>Services we offer</Typography>
         </MainWrapper>
       <Slider {...settings}>
             {Array.from({ length: 5 }).map((_, index) => (
@@ -90,6 +99,6 @@ function CenterMode() {
       </Slider>
     </div>
   );
-}
+})
 
 export default CenterMode;

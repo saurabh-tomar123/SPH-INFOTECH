@@ -1,5 +1,5 @@
 import React, {useState } from 'react';
-import Logo from "../Images/Logo.png"
+import Logo from "../Images/SPHLOGO.png"
 import { Typography, Box, styled, Button } from "@mui/material"
 
 const NavBar = styled(Box)({
@@ -52,6 +52,8 @@ const NavBar = styled(Box)({
     },
     "& .imgstyl": {
         paddingRight: "155px",
+        width: "125px",
+        height: "65px",
         "@media screen and (max-width: 1200px)": {
             paddingRight: "0px"
         },
@@ -59,9 +61,16 @@ const NavBar = styled(Box)({
 })
 
 
-const Header = () => {
+const Header = (props) => {
     const [tabs, setTabs] = useState(["Company", "Services", "Hire Dedicated Developer", "Industries", "Case Studies", "Portfolio"])
     const [activeTab, setActiveTab] = useState(0)
+
+    const handleTab = (index) => {
+        setActiveTab(index)
+        if(index === 1){
+            props.handleServiceFocus()
+        }
+    }
     return (
         <NavBar>
             <Box className="divWrapper" >
@@ -69,9 +78,9 @@ const Header = () => {
                 <Box className='tabsWrapper'>
                     {
                         tabs.map((item, index) =>
-                            <Typography className='textTypo' style={{fontWeight: `${(index == activeTab) ? 700 : 400}`}} onClick={()=> setActiveTab(index)}>{item}</Typography>
+                            <Typography className='textTypo' style={{fontWeight: `${(index == activeTab) ? 700 : 400}`}} onClick={()=> handleTab(index)}>{item}</Typography>
                         )}
-                    <Button className='btnDesign'>Contact Us</Button>
+                    <Button className='btnDesign' onClick={() => props.handleFocus()}>Contact Us</Button>
                 </Box>
 
             </Box>
