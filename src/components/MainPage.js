@@ -451,6 +451,7 @@ const MainWrapper = styled(Box)({
 const MainPage = () => {
     const currentRef = useRef(null)
     const serviceRef = useRef(null)
+    const [emailData, setEmailData] = useState('')
     const images = [
         { img: indiaImage, name: "HQ India" },
         { img: uaeImage, name: "UAE" },
@@ -498,12 +499,26 @@ const MainPage = () => {
         }
      }
      const handleServiceFocus = () => {
-        console.log("calling...")
 
         if(serviceRef.current){
             serviceRef.current.focusOnServices()
         }
      }
+
+     const postData = async () => {
+        try {
+           await fetch("http://192.168.166.139:3000/data", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({email: emailData}),
+          })
+          setEmailData('')
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      };
      
 
 
@@ -766,8 +781,10 @@ const MainPage = () => {
                 <Typography className='sinceTypo'>Share your email</Typography>
                 </Box>
                 <Box className="footerInternal">
-                    <input type="email"  placeholder='Enter Email Address' style={{  fontFamily:"Inter", fontSize:"20px", width: "70%", height: "50px",  borderRadius: "20px" ,paddingLeft: "20px"}} />
-                    <Button className='weDoBtn' style={{ borderRadius: "35px",  height: "50px" , width: "100%", maxWidth:"150px"}}> Send</Button>
+                    <input type="email"  value={emailData} placeholder='Enter Email Address' style={{  fontFamily:"Inter", fontSize:"20px", width: "70%", height: "50px",  borderRadius: "20px" ,paddingLeft: "20px"}}
+                    onChange={(event)=> setEmailData(event.target.value)} />
+                    <Button className='weDoBtn' style={{ borderRadius: "35px",  height: "50px" , width: "100%", maxWidth:"150px"}}
+                    onClick={postData}> Send</Button>
                 </Box>
                 </Box>
             </Box>

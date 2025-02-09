@@ -29,6 +29,31 @@ const handleFormData = (event) => {
     setFormData({...formData, [id]: value})
 }
 
+const postData = async () => {
+  try {
+     await fetch("http://192.168.166.139:3000/registerFormData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      setFormData({
+        name:"",
+        email: "",
+        phone: "",
+        country: "",
+        company: "",
+        website: "",
+        interested: "",
+        message: ""
+
+    })
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
 
   return (
         <div className="p-4 max-w-4xl mx-auto" ref = {registerSectionRef} >
@@ -108,8 +133,8 @@ const handleFormData = (event) => {
           <Button variant="contained" style={{ background: "linear-gradient(225deg, #A5327E 0%, #6C0D7C 100%)",
             opacity: `${(formData.email && formData.phone) ? "1" : "0.7"}`, color:"white"
            }}
-          onClick={() => {console.log(formData)}}
           disabled = {(formData.email === "" && formData.phone === "")}
+          onClick={postData}
           >
             Submit
           </Button>
