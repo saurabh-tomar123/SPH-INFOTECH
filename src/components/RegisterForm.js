@@ -72,6 +72,7 @@ const postData = async () => {
           type="email"
           variant="standard"
         style={{width:"40%"}}
+        required
         onChange={handleFormData}
         />
 
@@ -81,6 +82,7 @@ const postData = async () => {
           type="number"
           variant="standard"
         style={{width:"40%"}}
+        required
         onChange={handleFormData}
         />
 

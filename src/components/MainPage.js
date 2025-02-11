@@ -580,7 +580,7 @@ const MainPage = () => {
                 <Button className='weDoBtn'>What we do <img src={Arrow} style={{ paddingLeft: "12px" }} /></Button>
             </Box>
             <Typography className='globalText'>Global clients and handpicked projects that place innovation at the forefront</Typography>
-            <Box className="successText">package.json
+            <Box className="successText">
                 <Box>
                     <Typography className='sinceTypo' style={{ fontWeigth: 600 }}>01+</Typography>
                     <Typography className='cardTitle'>Year Of Sucess</Typography>
@@ -605,16 +605,6 @@ const MainPage = () => {
 
             <CenterMode ref={serviceRef}/>
 
-        <Box style={{ width:"100%", display: "flex", justifyContent: "center", alignItems: "center",paddingTop: "119px", paddingBottom: "67px"}}>
-            <Box className="hireBox">
-                <Typography className='hireText'>Hire the best developers and designers around!</Typography>
-                <Box style={{position:"relative"}}>
-                    <img src= {CircleLine} style={{ position: "absolute", top: "-60px", left: "32px" }}/>
-                    <Button className='weDoBtn'>Hire Top Developers</Button>
-                    </Box>
-
-            </Box>
-        </Box>
         <Box className="mainCardWrapper">
         <Box className="box1">
             <Box>
@@ -735,6 +725,16 @@ const MainPage = () => {
                 boxShadow: '0px 0px 85.08px 0px #0000001A' }}>
                 <Typography className='getinTouch'>Get In touch with us</Typography>
                 <RegisterForm  ref = {currentRef} />
+            </Box>
+        </Box>
+        <Box style={{ width:"100%", display: "flex", justifyContent: "center", alignItems: "center",paddingTop: "119px", paddingBottom: "67px"}}>
+            <Box className="hireBox">
+                <Typography className='hireText'>Hire the best developers and designers around!</Typography>
+                <Box style={{position:"relative"}}>
+                    <img src= {CircleLine} style={{ position: "absolute", top: "-60px", left: "32px" }}/>
+                    <Button className='weDoBtn'>Hire Top Developers</Button>
+                    </Box>
+
             </Box>
         </Box>
         <Box style={{ width:"100%", paddingBottom:'20px' }}>
